@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" type="text/css" href="bootstrap4.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap4.1.1/css/bootstrap-slider.min.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap4.1.1/css/highlightjs-github-theme.css">
+		<script src="bootstrap4.1.1/js/bootstrap.min.js"></script>
+		<script src="bootstrap4.1.1/js/jquery-3.3.1.min.js"></script>
+		<script src="bootstrap4.1.1/js/jquery.blockUI.js"></script>
+		<script src="bootstrap4.1.1/js/bootstrap-slider.min.js"></script>
+		<script src="bootstrap4.1.1/js/highlight.min.js"></script>
+	</head>
+	<body>
+		<form id="uploadId" method="POST" th:action="@{/upload}" th:object="${reportDto}" enctype="multipart/form-data">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12">
+						<fieldset>
+							<legend>Upload Image</legend>
+							<input type="file" th:field="*{file}" />
+							<input type="submit" value="Run" />
+						</fieldset>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-sm-3">
+						0.01 <input id="vhSlider" type="text" th:field="*{vhValues}" class="span2" value="" data-slider-min="0.01" data-slider-max="0.1" data-slider-step="0.01" data-slider-value="[0.03,0.04]"/> 0.1
+					</div>
+					<div class="col-sm-3">
+						1 <input id="heSlider" type="text" th:field="*{heValues}" class="span2" value="" data-slider-min="1" data-slider-max="50" data-slider-step="1" data-slider-value="[24,27]"/> 50
+					</div>
+					<div class="col-sm-3">
+						0.4 <input id="hemSlider" data-slider-id='hemSlider' type="text" th:field="*{hemValue}" data-slider-min="0.4" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.6"/> 1
+					</div>
+					<div class="col-sm-3">
+						1 <input id="cwsSlider" type="text" th:field="*{cwsValues}" class="span2" value="" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="[22,30]"/> 100
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">Vitreous Hemorrhage</div>
+					<div class="col-sm-3">Hard Exudates</div>
+					<div class="col-sm-3">Hemorrhages</div>
+					<div class="col-sm-3">Cotton Wool Spots</div>
+				</div>
+			</div>
+			<br>
+			<div class="container-fluid">
+				<div  th:class="*{error} ? 'row' : 'invisible'">
+					<div class="col-sm-12">
+						<span th:text="*{errorMessage}"></span>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="container-fluid">
+				<div th:class="*{imageUrl} != null ? 'row' : 'invisible'">
+					<div align="right" class="col-sm-5">
+						<img th:src="*{imageUrl}" class="img-rounded" alt="Image">
+					</div>
+					<div align="right" class="col-sm-5">
+						<img th:src="*{reportUrl}" class="img-rounded" alt="Report">
+					</div>
+					<div align="left" class="col-sm-2">
+						<span style="color:green">Hard Exudates</span><br>
+						<span style="color:blue">Hemorrhages</span><br>
+						<span style="color:violet">Cotton Wool Spots</span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script>
+		$("#vhSlider").slider({
+			tooltip: 'always'
+		});
+
+		$("#heSlider").slider({
+			tooltip: 'always'
+		});
+
+		$("#hemSlider").slider({
+			tooltip: 'always'
+		});
+
+		$("#cwsSlider").slider({
+			tooltip: 'always'
+		});
+		$("#uploadId").submit(function( event ) {
+			$.blockUI.defaults.message = '<img src="images/loading.gif" />';
+			$.blockUI();
+		});
+	</script>
+</html>
