@@ -10,9 +10,6 @@ public class ReportDto {
 	private float hemValue;
 	private float cwsMinValue;
 	private float cwsMaxValue;
-	private String vhValues;
-	private String heValues;
-	private String cwsValues;
 	private MultipartFile file;
 	private String imageUrl;
 	private String reportUrl;
@@ -60,24 +57,6 @@ public class ReportDto {
 	}
 	public void setCwsMaxValue(float cwsMaxValue) {
 		this.cwsMaxValue = cwsMaxValue;
-	}
-	public String getVhValues() {
-		return vhValues;
-	}
-	public void setVhValues(String vhValues) {
-		this.vhValues = vhValues;
-	}
-	public String getHeValues() {
-		return heValues;
-	}
-	public void setHeValues(String heValues) {
-		this.heValues = heValues;
-	}
-	public String getCwsValues() {
-		return cwsValues;
-	}
-	public void setCwsValues(String cwsValues) {
-		this.cwsValues = cwsValues;
 	}
 	public MultipartFile getFile() {
 		return file;

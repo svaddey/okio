@@ -2,41 +2,41 @@ package com.braviithi.okio.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
+/*import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-@Entity
-@Table(name = "Reports")
+*/
+//@Entity
+//@Table(name = "Reports")
 public class Report implements Serializable {
 
 	private static final long serialVersionUID = -6607362751888781711L;
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id")
+//	@Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//	@Column(name = "Id")
     private Long id;
 	
-	@Column(name = "VhMinValue")
+//	@Column(name = "VhMinValue")
 	private float vhMinValue;
-	@Column(name = "VhMaxValue")
+//	@Column(name = "VhMaxValue")
 	private float vhMaxValue;
-	@Column(name = "HeMinValue")
+//	@Column(name = "HeMinValue")
 	private float heMinValue;
-	@Column(name = "HeMaxValue")
+//	@Column(name = "HeMaxValue")
 	private float heMaxValue;
-	@Column(name = "HemValue")
+//	@Column(name = "HemValue")
 	private float hemValue;
-	@Column(name = "CwsMinValue")
+//	@Column(name = "CwsMinValue")
 	private float cwsMinValue;
-	@Column(name = "CwsMaxValue")
+//	@Column(name = "CwsMaxValue")
 	private float cwsMaxValue;
-	@Column(name = "OrigImageLoc")
+//	@Column(name = "OrigImageLoc")
 	private String origImageLocation;
-	@Column(name = "FindingsImageLoc")
+//	@Column(name = "FindingsImageLoc")
 	private String findingsImageLocation;
 	
 	protected Report() {

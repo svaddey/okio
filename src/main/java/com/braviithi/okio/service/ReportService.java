@@ -68,22 +68,9 @@ public class ReportService implements IReportService {
 	@Override
 	public void uploadFile(ReportDto reportDto) {
 		MultipartFile multipartFile = reportDto.getFile();
-		String vhValues = reportDto.getVhValues();
-		String[] vhMinMax = vhValues.split(",");
-		String heValues = reportDto.getHeValues();
-		String[] heMinMax = heValues.split(",");
-		String cwsValues = reportDto.getCwsValues();
-		String[] cwsMinMax = cwsValues.split(",");
-		reportDto.setVhMinValue(Float.parseFloat(vhMinMax[0]));
-		reportDto.setVhMaxValue(Float.parseFloat(vhMinMax[1]));
-		reportDto.setHeMinValue(Float.parseFloat(heMinMax[0]));
-		reportDto.setHeMaxValue(Float.parseFloat(heMinMax[1]));
-		reportDto.setHemValue(0.6f);
-		reportDto.setCwsMinValue(Float.parseFloat(cwsMinMax[0]));
-		reportDto.setCwsMaxValue(Float.parseFloat(cwsMinMax[1]));
 		File file = convert(multipartFile);
 		String awsKey = s3Service.uploadFile(multipartFile.getOriginalFilename(), file);
-		rService.processImage(awsKey, reportDto);
+//		rService.processImage(awsKey, reportDto);
 		s3Service.modifyACL(getObject(awsKey, "revised"));
 		s3Service.modifyACL(getObject(awsKey, "report"));
 		reportDto.setImageUrl(getUrl(awsKey, "revised"));
